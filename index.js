@@ -8,9 +8,9 @@ mofron.effect.Fade = class extends mofron.Effect {
     initEffect (flg, eff) {
         try {
             if (true === flg) {
-                eff.target.vdom().style('opacity', '0');
+                eff.target().vdom().style('opacity', '0');
             } else {
-                eff.target.vdom().style('opacity', '1');
+                eff.target().vdom().style('opacity', '1');
             }
         } catch (e) {
             console.error(e.stack);
@@ -21,9 +21,9 @@ mofron.effect.Fade = class extends mofron.Effect {
     effectConts (flg, eff) {
         try {
             if (true === flg) {
-                eff.target.vdom().style('opacity', '1');
+                eff.target().vdom().style('opacity', '1');
             } else {
-                eff.target.vdom().style('opacity', '0');
+                eff.target().vdom().style('opacity', '0');
             }
         } catch (e) {
             console.error(e.stack);
@@ -31,3 +31,4 @@ mofron.effect.Fade = class extends mofron.Effect {
         }
     }
 }
+module.exports = mofron.effect.Fade;
