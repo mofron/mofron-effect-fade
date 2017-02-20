@@ -3,28 +3,30 @@
  * @author simpart
  */
 
+/**
+ * @class Fade
+ * @brief fade effect class
+ */
 mofron.effect.Fade = class extends mofron.Effect {
     
-    initEffect (flg, eff) {
+    /**
+     * fade in
+     */
+    enable () {
         try {
-            if (true === flg) {
-                eff.target().vdom().style('opacity', '0');
-            } else {
-                eff.target().vdom().style('opacity', '1');
-            }
+            this.target().vdom().style('opacity', '1');
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
-    effectConts (flg, eff) {
+    /**
+     * fade out
+     */
+    disable () {
         try {
-            if (true === flg) {
-                eff.target().vdom().style('opacity', '1');
-            } else {
-                eff.target().vdom().style('opacity', '0');
-            }
+            this.target().vdom().style('opacity', '0');
         } catch (e) {
             console.error(e.stack);
             throw e;
