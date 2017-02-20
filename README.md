@@ -16,12 +16,15 @@ require('mofron');
 let Text = require('mofron-comp-text');
 let Fade = require('mofron-effect-fade');
 
+/* fade-in effect sample */
 let f_in = new Text({
-    param : 'Fade In',
-    size  : 30
+    param   : 'Fade In',
+    size    : 30,
+    effect  : new Fade(),
+    visible : true
 });
-f_in.visible(true, new Fade());
 
+/* fade-out effectt sample */
 let f_out = new Text({
     param   : 'Fade Out',
     size    : 30,
