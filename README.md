@@ -17,11 +17,10 @@ let Text = require('mofron-comp-text');
 let Fade = require('mofron-effect-fade');
 
 /* fade-in effect sample */
-let f_in = new Text({
+new Text({
     param   : 'Fade In',
     size    : 30,
-    effect  : new Fade(),
-    visible : true
+    visible : new Mof.Param(true,new Fade())
 });
 
 /* fade-out effectt sample */
