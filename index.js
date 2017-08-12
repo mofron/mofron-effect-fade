@@ -9,12 +9,28 @@
  */
 mofron.effect.Fade = class extends mofron.Effect {
     
+    constructor (prm_opt) {
+        try {
+            super();
+            this.name('Fade');
+            if ( (undefined === prm_opt) &&
+                 ( ('object'  === typeof prm_opt) &&
+                   (undefined === typeof prm_opt.speed) ) ) {
+                this.speed(0.7);
+            }
+            this.prmOpt(prm_opt);
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
     /**
      * fade in
      */
-    enable () {
+    enable (tgt) {
         try {
-            this.target().vdom().style('opacity', '1');
+            tgt.vdom().style({'opacity' : '1'});
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -24,9 +40,9 @@ mofron.effect.Fade = class extends mofron.Effect {
     /**
      * fade out
      */
-    disable () {
+    disable (tgt) {
         try {
-            this.target().vdom().style('opacity', '0');
+            tgt.vdom().style({'opacity' : '0'});
         } catch (e) {
             console.error(e.stack);
             throw e;
