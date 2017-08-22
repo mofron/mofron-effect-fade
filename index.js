@@ -9,16 +9,15 @@
  */
 mofron.effect.Fade = class extends mofron.Effect {
     
-    constructor (prm_opt) {
+    constructor (po) {
         try {
-            super();
+            super(po);
             this.name('Fade');
-            if ( (undefined === prm_opt) &&
-                 ( ('object'  === typeof prm_opt) &&
-                   (undefined === typeof prm_opt.speed) ) ) {
+            if ( (undefined === po) &&
+                 ( ('object'  === typeof po) &&
+                   (undefined === typeof po.speed) ) ) {
                 this.speed(0.7);
             }
-            this.prmOpt(prm_opt);
         } catch (e) {
             console.error(e.stack);
             throw e;

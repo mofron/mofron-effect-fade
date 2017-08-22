@@ -1,6 +1,6 @@
 {
   "name": "mofron-effect-fade",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "fade effect of mofron",
   "main": "index.js",
   "scripts": {
@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simpart/mofron-effect-fade.git"
+    "url": "git+https://github.com/mofron/mofron-effect-fade.git"
   },
   "keywords": [
-    "mofron"
+    "front end"
   ],
   "author": "simparts",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/simpart/mofron-effect-fade/issues"
+    "url": "https://github.com/mofron/mofron-effect-fade/issues"
   },
-  "homepage": "https://github.com/simpart/mofron-effect-fade#readme",
+  "homepage": "https://github.com/mofron/mofron-effect-fade#readme",
   "devDependencies": {
   }
 }
