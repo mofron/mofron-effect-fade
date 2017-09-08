@@ -13,7 +13,7 @@ mofron.effect.Fade = class extends mofron.Effect {
         try {
             super(po);
             this.name('Fade');
-            if ( (undefined === po) &&
+            if ( (undefined === po) ||
                  ( ('object'  === typeof po) &&
                    (undefined === typeof po.speed) ) ) {
                 this.speed(0.7);
