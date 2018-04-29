@@ -11,18 +11,10 @@ mofron.effect.Fade = class extends mofron.Effect {
     
     constructor (po) {
         try {
-            super();
+            super(po);
             this.name('Fade');
-            
+            this.speed(0.7);
             this.prmOpt(po);
-            if (null !== this.param()) {
-                this.speed(po);
-            }
-            
-            /* set default speed */
-            if (0 === this.speed()) {
-                this.speed(0.7);
-            }
         } catch (e) {
             console.error(e.stack);
             throw e;
