@@ -26,7 +26,7 @@ mofron.effect.Fade = class extends mofron.Effect {
      */
     enable (tgt) {
         try {
-            tgt.vdom().style({'opacity' : '1'});
+            tgt.adom().style({'opacity' : '1'});
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -38,7 +38,7 @@ mofron.effect.Fade = class extends mofron.Effect {
      */
     disable (tgt) {
         try {
-            tgt.vdom().style({'opacity' : '0'});
+            tgt.adom().style({'opacity' : '0'});
         } catch (e) {
             console.error(e.stack);
             throw e;
