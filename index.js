@@ -13,7 +13,7 @@ mofron.effect.Fade = class extends mofron.Effect {
         try {
             super(po);
             this.name('Fade');
-            this.speed(0.7);
+            this.prmMap('speed');
             this.prmOpt(po);
         } catch (e) {
             console.error(e.stack);
@@ -44,5 +44,18 @@ mofron.effect.Fade = class extends mofron.Effect {
             throw e;
         }
     }
+    
+    speed (prm) {
+        try {
+            if (undefined === prm) {
+                return (0 === super.speed()) ? 0.7 : super.speed();
+            }
+            super.speed(prm);
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
 }
 module.exports = mofron.effect.Fade;
+/* end of file */
