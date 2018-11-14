@@ -21,11 +21,25 @@ mofron.effect.Fade = class extends mofron.Effect {
         }
     }
     
+    execute (flg) {
+        try {
+            if ( (true === this.status()) &&
+                 ('0' !== this.component().style('opacity')) ) {
+                this.component().style({ 'opacity' : '0' });
+            }
+            super.execute(flg);
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
     /**
      * fade in
      */
     enable (tgt) {
         try {
+console.log(tgt);
             tgt.adom().style({'opacity' : '1'});
         } catch (e) {
             console.error(e.stack);
