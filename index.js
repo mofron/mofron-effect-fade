@@ -25,17 +25,17 @@ mf.effect.Fade = class extends mf.Effect {
     }
     
     /**
-     * setting opacity css
-     *
+     * initialize opacity setting
+     * 
      * @note private method
      */
-    execute (flg) {
+    component (prm) {
         try {
-            if ( (true === this.status()) &&
-                 ('0' !== this.component().adom().style('opacity')) ) {
+            let ret = super.component(prm);
+            if (undefined !== prm) {
                 this.component().adom().style({ 'opacity' : '0' });
             }
-            super.execute(flg);
+            return ret;
         } catch (e) {
             console.error(e.stack);
             throw e;
