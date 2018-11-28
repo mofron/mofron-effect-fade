@@ -16,26 +16,23 @@ mf.effect.Fade = class extends mf.Effect {
             super(po);
             this.name('Fade');
             this.prmMap('speed');
-            this.speed(0.7);
+            this.speed(700);
+            
+            /* opacity setting */
+            this.beforeExec(
+                (bf_eff, bf_flg, bf_prm) => {
+                    try {
+                        bf_eff.component().adom().style({
+                            'opacity' : (true === bf_flg) ? '0' : '1'
+                        });
+                    } catch (e) {
+                        console.error(e.stack);
+                        throw e;
+                    }
+                }
+            );
+            
             this.prmOpt(po);
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
-    
-    /**
-     * initialize opacity setting
-     * 
-     * @note private method
-     */
-    component (prm) {
-        try {
-            let ret = super.component(prm);
-            if (undefined !== prm) {
-                this.component().adom().style({ 'opacity' : '0' });
-            }
-            return ret;
         } catch (e) {
             console.error(e.stack);
             throw e;
