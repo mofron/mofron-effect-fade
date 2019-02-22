@@ -15,17 +15,16 @@ mf.effect.Fade = class extends mf.Effect {
         try {
             super(po);
             this.name('Fade');
-            this.prmMap('speed');
+            this.prmMap('value');
             /* init config */
             this.speed(700);
-            this.value([1, 0]);
             
             /* opacity setting */
             this.beforeEvent(
-                (bf_eff, bf_eid, bf_prm) => {
+                (bf_eff, bf_prm) => {
                     try {
                         bf_eff.component().adom().style({
-                            'opacity' : (0 === bf_eff.value()[bf_eid]) ? 1 : 0
+                            'opacity' : (0 === bf_eff.value()) ? 1 : 0
                         });
                     } catch (e) {
                         console.error(e.stack);
@@ -41,29 +40,15 @@ mf.effect.Fade = class extends mf.Effect {
         }
     }
     
-    contents (eid, cmp) {
-        try {
-console.log("fade");
-            let val = this.value()[eid];
-            if (undefined === val) {
-                return;
-            }
-            cmp.adom().style({'opacity' : val});
-        } catch (e) {
+    contents (cmp) {
+        try { cmp.adom().style({ 'opacity' : this.value() }); } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
     value (prm) {
-        try { return this.execConfig('value', 'number', prm); } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
-    
-    valueIndex (prm, idx) {
-        try { return this.execConfig('value', 'number', prm, idx); } catch (e) {
+        try { return this.member('value', 'number', prm, 1); } catch (e) {
             console.error(e.stack);
             throw e;
         }
