@@ -24,7 +24,7 @@ mf.effect.Fade = class extends mf.Effect {
                 (bf_eff, bf_prm) => {
                     try {
                         bf_eff.component().adom().style({
-                            'opacity' : (0 === bf_eff.value()) ? 1 : 0
+                            'opacity' : (true === bf_eff.value()) ? 0 : 1
                         });
                     } catch (e) {
                         console.error(e.stack);
@@ -41,14 +41,14 @@ mf.effect.Fade = class extends mf.Effect {
     }
     
     contents (cmp) {
-        try { cmp.adom().style({ 'opacity' : this.value() }); } catch (e) {
+        try { cmp.adom().style({ 'opacity' : (true === this.value()) ? 1 : 0 }); } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
     value (prm) {
-        try { return this.member('value', 'number', prm, 1); } catch (e) {
+        try { return this.member('value', 'boolean', prm, true); } catch (e) {
             console.error(e.stack);
             throw e;
         }
