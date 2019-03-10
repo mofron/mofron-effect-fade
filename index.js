@@ -11,11 +11,11 @@ mf.effect.Fade = class extends mf.Effect {
      * @param p1 (number) effect speed (second)
      * @param p1 (object) effect option
      */
-    constructor (po) {
+    constructor (po, p2) {
         try {
             super(po);
             this.name('Fade');
-            this.prmMap('value');
+            this.prmMap(['value', 'speed']);
             /* init config */
             this.speed(700);
             
@@ -33,7 +33,7 @@ mf.effect.Fade = class extends mf.Effect {
                 }
             );
             
-            this.prmOpt(po);
+            this.prmOpt(po,p2);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -41,7 +41,8 @@ mf.effect.Fade = class extends mf.Effect {
     }
     
     contents (cmp) {
-        try { cmp.adom().style({ 'opacity' : (true === this.value()) ? 1 : 0 }); } catch (e) {
+        try {
+            cmp.adom().style({ 'opacity' : (true === this.value()) ? 1 : 0 }); } catch (e) {
             console.error(e.stack);
             throw e;
         }
