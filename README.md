@@ -1,33 +1,30 @@
 # mofron-effect-fade
-fade in/out effect for mofron component
+[mofron](https://mofron.github.io/mofron/) is module based frontend framework.
+
+fade effect for mofron
+
 
 # Install
-fade dependencies mofron.
-please see [here](https://github.com/simpart/mofron) about mofron overview.
-
-```bash
-npm install mofron-effect-fade
+```
+npm install mofron mofron-effect-fade
 ```
 
 # Sample
+```html
+<require>
+    <tag load="mofron-comp-text">Text</tag>
+    <tag load="mofron-effect-fade">Fade</tag>
+</require>
 
-```javascript
-require('mofron');
-let Text = require('mofron-comp-text');
-let Fade = require('mofron-effect-fade');
-
-/* fade-in effect sample */
-new Text({
-    param   : 'Fade In',
-    size    : 30,
-    visible : new Mof.Param(true,new Fade())
-});
-
-/* fade-out effectt sample */
-let f_out = new Text({
-    param   : 'Fade Out',
-    size    : 30,
-    visible : true
-});
-f_out.visible(false, new Fade());
+<Text size=1rem effect=Fade(true,1000)>
+Fade Effect
+</Text>
 ```
+
+# Parameter
+
+| Short<br>Form | Parameter Name | Type | Description |
+|:-------------:|:---------------|:-----|:------------|
+| ◯  | value | boolean | true: fade-in effect |
+| | | | false: fade-out effect |
+
