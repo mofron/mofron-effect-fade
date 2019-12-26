@@ -3,29 +3,35 @@
  * @brief fade effect for mofron
  * @author simpart
  */
-const mf = require('mofron');
-mf.effect.Fade = class extends mf.Effect {
+const cmputl = mofron.util.component;
+
+module.exports = class extends mofron.class.Effect {
     /**
      * initialize fade effect
-     *
-     * @param p1 (number) effect speed (second)
-     * @param p1 (object) effect option
+     * 
+     * @param (mixed) boolean: value parameter
+     *                object: effect config
+     * @param (number) speed parameter
+     * @short value,speed
+     * @type private
      */
-    constructor (po, p2) {
+    constructor (p1, p2) {
         try {
-            super(po);
+            super();
             this.name('Fade');
-            this.prmMap(['value', 'speed']);
+            
+            this.confmng().add("value", { type: "boolean", init: true });
+	    this.shortForm("value", "speed");
+
             /* init config */
             this.speed(700);
             
             /* opacity setting */
             this.beforeEvent(
-                (bf_eff, bf_prm) => {
+                (bf_eff) => {
                     try {
-                        bf_eff.component().adom().style({
-                            'opacity' : (true === bf_eff.value()) ? 0 : 1
-                        });
+		        let stval = { 'opacity' : (true === bf_eff.value()) ? 0 : 1 };
+		        cmputl.rstyle(bf_eff.component(), stval);
                     } catch (e) {
                         console.error(e.stack);
                         throw e;
@@ -33,27 +39,48 @@ mf.effect.Fade = class extends mf.Effect {
                 }
             );
             
-            this.prmOpt(po,p2);
+	    if (0 < arguments.length) {
+                this.config(p1,p2);
+            }
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
+    /**
+     * effect contents
+     * 
+     * @param (component) effect target component object
+     * @type private
+     */
     contents (cmp) {
         try {
-            cmp.adom().style({ 'opacity' : (true === this.value()) ? 1 : 0 }); } catch (e) {
+	    cmputl.rstyle(
+	        cmp,
+	        { 'opacity' : (true === this.value()) ? 1 : 0 }
+	    );
+        } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
+    /**
+     * fade type value
+     * 
+     * @param (boolean) true: fade-in effect
+     *                  false: fade-out effect
+     * @return (boolean) fade type
+     * @type parameter
+     */
     value (prm) {
-        try { return this.member('value', 'boolean', prm, true); } catch (e) {
+        try {
+	    return this.confmng("value", prm);
+	} catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
 }
-module.exports = mf.effect.Fade;
 /* end of file */
