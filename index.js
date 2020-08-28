@@ -18,13 +18,14 @@ module.exports = class extends mofron.class.Effect {
     constructor (p1, p2) {
         try {
             super();
-            this.name('Fade');
+            this.modname('Fade');
             
             this.confmng().add("value", { type: "boolean", init: true });
 	    this.shortForm("value", "speed");
 
             /* init config */
             this.speed(700);
+	    this.transition("opacity");
             
             /* opacity setting */
             this.beforeEvent(

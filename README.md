@@ -11,10 +11,10 @@ npm install mofron mofron-effect-fade
 
 # Sample
 ```html
-<require>
+<setting>
     <tag load="mofron-comp-text">Text</tag>
     <tag load="mofron-effect-fade">Fade</tag>
-</require>
+</setting>
 
 <Text size=1rem effect=Fade(true,1000)>
 Fade Effect
