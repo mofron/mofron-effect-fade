@@ -25,6 +25,7 @@ module.exports = class extends mofron.class.Effect {
 
             /* init config */
             this.speed(700);
+	    this.eid(0);
 	    this.transition("opacity");
             
             /* opacity setting */
@@ -77,6 +78,9 @@ module.exports = class extends mofron.class.Effect {
      */
     value (prm) {
         try {
+	    if (undefined !== prm) {
+                this.eid((true === prm)? 0:1);
+	    }
 	    return this.confmng("value", prm);
 	} catch (e) {
             console.error(e.stack);
