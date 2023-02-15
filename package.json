@@ -1,6 +1,6 @@
 {
   "name": "mofron-effect-fade",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "fade effect of mofron",
   "main": "index.js",
   "scripts": {
