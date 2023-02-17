@@ -78,7 +78,7 @@ module.exports = class extends mofron.class.Effect {
      */
     value (prm) {
         try {
-	    if ((true === prm) && (0 === this.eid())) {
+	    if ((false === prm) && (0 === this.eid())) {
                 this.eid(1);
 	    }
 	    return this.confmng("value", prm);
